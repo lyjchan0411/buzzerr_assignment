@@ -8,7 +8,9 @@ router.get("/", (req, res) => {
     let filteredArr =
       usersData &&
       usersData.filter(
-        (user) => user.name.toLowerCase().indexOf(searchValue) === 0
+        (user) =>
+          user.name.toLowerCase().indexOf(searchValue) === 0 ||
+          user.company.toLowerCase().indexOf(searchValue) === 0
       );
     res.status(200).json(filteredArr);
   } else {
