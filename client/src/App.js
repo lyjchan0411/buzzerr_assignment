@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar usersData={usersData} />
     </div>
   );
 }
