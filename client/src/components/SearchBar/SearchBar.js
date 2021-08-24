@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DropDownList from "../DropDownList/DropDownList";
 import axios from "axios";
+import Modal from "../Modal/Modal";
 
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
-  const [filteredValues, setFilteredValues] = useState([]);
+  const [selectedUser, setSelectedUser] = useState([]);
   const [usersData, setUsersData] = useState();
   const URL = "http://localhost:5000/users";
 
@@ -13,7 +14,8 @@ export default function SearchBar() {
   };
 
   const onClickHandler = (id) => {
-    console.log(id);
+    let filteredArr = usersData && usersData.filter((user) => user._id === id);
+    setSelectedUser([...filteredArr]);
   };
 
   useEffect(() => {
@@ -34,10 +36,8 @@ export default function SearchBar() {
   return (
     <div>
       <input type="text" onChange={onChangeHandler} />
-      <DropDownList
-        usersData={usersData}
-        onClickHandler={onClickHandler}
-      />
+      <Modal selectedUser={selectedUser} />
+      <DropDownList usersData={usersData} onClickHandler={onClickHandler} />
     </div>
   );
 }
