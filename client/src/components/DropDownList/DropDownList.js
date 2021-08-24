@@ -1,11 +1,15 @@
 import React from "react";
 
-export default function DropDownList({ filteredValues }) {
+export default function DropDownList({ usersData, onClickHandler }) {
   return (
     <td>
-      {filteredValues &&
-        filteredValues.map((user) => {
-          return <tr>{user.name}</tr>;
+      {usersData &&
+        usersData.map((user) => {
+          return (
+            <tr key={user._id} onClick={() => onClickHandler(user._id)}>
+              {user.name}
+            </tr>
+          );
         })}
     </td>
   );
