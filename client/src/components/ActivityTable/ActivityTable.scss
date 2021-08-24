@@ -1,0 +1,13 @@
+.table {
+  border: 1px solid black;
+  th td {
+    margin: 0;
+  }
+  &__header {
+    border-bottom: 1px solid black;
+  }
+  &__item-middle {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+}
