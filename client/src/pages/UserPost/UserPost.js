@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post/Post";
-import ActivityTable from "../../components/ActivityTable/ActivityTable";
 import "./UserPost.scss";
 
 export default function UserPost(props) {
