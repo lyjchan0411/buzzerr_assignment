@@ -4,7 +4,7 @@ import axios from "axios";
 import Post from "../Post/Post";
 import ActivityTable from "../ActivityTable/ActivityTable";
 
-export default function SearchBar() {
+export default function Feed() {
   const [searchValue, setSearchValue] = useState("");
   const [selectedUser, setSelectedUser] = useState([]);
   const [usersData, setUsersData] = useState();

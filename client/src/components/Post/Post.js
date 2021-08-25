@@ -1,37 +1,7 @@
 import React from "react";
+import "./Post.scss";
 
 export default function Post({ usersData }) {
-  // if (usersData) {
-  //   let sortedDateData = [
-  //     ...usersData.sort(function (a, b) {
-  //       return new Date(b.date_posted) - new Date(a.date_posted);
-  //     }),
-  //   ];
-  //   console.log(sortedDateData);
-  // }
-
-  console.log(
-    usersData &&
-      new Date(
-        `${usersData[0].date_posted.substring(
-          3,
-          5
-        )}/${usersData[0].date_posted.substring(
-          0,
-          2
-        )}/${usersData[0].date_posted.substring(6, 11)}`
-      ) -
-        new Date(
-          `${usersData[1].date_posted.substring(
-            3,
-            5
-          )}/${usersData[1].date_posted.substring(
-            1,
-            2
-          )}/${usersData[1].date_posted.substring(6, 11)}`
-        )
-  );
-
   usersData &&
     usersData.sort(
       (a, b) =>
@@ -56,14 +26,16 @@ export default function Post({ usersData }) {
           return (
             <div key={user._id} className="post">
               <img
-                className="post-image"
+                className="post__image"
                 src={user.profile_pic}
                 alt="profile"
               />
-              <h3 className="post-name">{user.name}</h3>
-              <h5 className="post-date">{user.date_posted}</h5>
-              <h5 className="post-likes">{user.likes}</h5>
-              <h5 className="post-content">{user.post_content}</h5>
+              <div className="post__content-container">
+                <h3 className="post__name">{user.name}</h3>
+                <h5 className="post__date">{user.date_posted}</h5>
+                <h5 className="post__content">{user.post_content}</h5>
+                <h5 className="post__likes">Likes: {user.likes}</h5>
+              </div>
             </div>
           );
         })}
