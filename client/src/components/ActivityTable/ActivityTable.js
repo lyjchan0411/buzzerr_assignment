@@ -1,7 +1,8 @@
 import React from "react";
 import "./ActivityTable.scss";
 
-export default function ActivityTable() {
+export default function ActivityTable({ user }) {
+  let totalPost = user.length;
   return (
     <table className="table">
       <thead>
@@ -14,6 +15,16 @@ export default function ActivityTable() {
         <td className="table__item table__item-middle">Total Posts</td>
         <td className="table__item">Total Likes</td>
       </tbody>
+      {user &&
+        user.map((user) => {
+          return (
+            <tbody>
+              <td className="table__item">{user.name}</td>
+              <td className="table__item table__item-middle">{totalPost}</td>
+              <td className="table__item">{user.likes}</td>
+            </tbody>
+          );
+        })}
     </table>
   );
 }

@@ -20,7 +20,7 @@ export default function Post({ usersData }) {
     );
 
   return (
-    <div>
+    <div className="post-container">
       {usersData &&
         usersData.map((user) => {
           return (

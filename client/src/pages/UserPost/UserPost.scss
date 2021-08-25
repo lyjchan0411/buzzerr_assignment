@@ -1,0 +1,19 @@
+.userpost {
+  width: 60vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  &__header-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 40px 0 50px;
+    width: 100%;
+    a {
+      width: 20%;
+    }
+    &__header {
+      width: 40%;
+    }
+  }
+}
