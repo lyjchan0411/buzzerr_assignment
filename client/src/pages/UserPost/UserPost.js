@@ -7,7 +7,7 @@ import "./UserPost.scss";
 export default function UserPost(props) {
   const [user, setUser] = useState();
   let id = props.match.params.id;
-  let URL = "http://localhost:5000/users/";
+  let URL = "https://buzzerr.herokuapp.com/users/";
 
   useEffect(() => {
     axios

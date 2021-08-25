@@ -5,7 +5,7 @@ import "./ActivityTable.scss";
 
 export default function ActivityTable({ user }) {
   const [tableData, setTableData] = useState();
-  let URL = "http://localhost:5000/activities";
+  let URL = "https://buzzerr.herokuapp.com/activities";
 
   useEffect(() => {
     axios

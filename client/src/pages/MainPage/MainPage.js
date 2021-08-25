@@ -12,7 +12,7 @@ export default function MainPage() {
   const [filteredValues, setFilteredValues] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(20);
-  const URL = "http://localhost:5000/users";
+  const URL = "https://buzzerr.herokuapp.com/users";
 
   const onChangeHandler = (e) => {
     setSearchValue(e.target.value.toLowerCase());
