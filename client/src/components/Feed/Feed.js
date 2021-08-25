@@ -23,18 +23,6 @@ export default function Feed() {
   };
 
   useEffect(() => {
-    // axios
-    //   .get(URL, {
-    //     params: {
-    //       searchValue: searchValue.toLowerCase(),
-    //     },
-    //   })
-    //   .then((res) => {
-    //     setUsersData(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     axios
       .get(URL)
       .then((res) => {
@@ -48,7 +36,9 @@ export default function Feed() {
       let filteredArr =
         usersData &&
         usersData.filter(
-          (user) => user.name.toLowerCase().indexOf(searchValue) === 0
+          (user) =>
+            user.name.toLowerCase().includes(searchValue) ||
+            user.company.toLowerCase().includes(searchValue)
         );
       setFilteredValues(filteredArr);
     } else {
@@ -65,7 +55,7 @@ export default function Feed() {
             type="text"
             onChange={onChangeHandler}
             className="feed__searchbar"
-            placeholder="Type here to search for specific user"
+            placeholder="Search for an user by the name or company name"
           />
           <DropDownList
             filteredValues={filteredValues}

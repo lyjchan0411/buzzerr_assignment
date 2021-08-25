@@ -20,27 +20,27 @@ export default function ActivityTable({ user }) {
 
   return (
     <table className="table">
-      <thead>
+      <tr>
         <th colSpan="3" className="table__header">
           User Activity in the past 30 Days
         </th>
-      </thead>
-      <tbody>
-        <td className="table__item">Username</td>
-        <td className="table__item table__item-middle">Total Posts</td>
-        <td className="table__item">Total Likes</td>
-      </tbody>
+      </tr>
+      <tr>
+        <td className="table__item table__item-top-row">Username</td>
+        <td className="table__item table__item-top-row">Total Posts</td>
+        <td className="table__item table__item-top-row">Total Likes</td>
+      </tr>
       {tableData &&
         tableData.map((post) => {
           return (
-            <tbody key={post._id}>
+            <tr key={post._id}>
               <td className="table__item">{post.name}</td>
-              <td className="table__item table__item-middle">
+              <td className="table__item">
                 {tableData &&
                   tableData.filter((user) => user.name === post.name).length}
               </td>
               <td className="table__item">{post.likes}</td>
-            </tbody>
+            </tr>
           );
         })}
     </table>

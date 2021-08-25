@@ -1,13 +1,21 @@
 .table {
   border: 1px solid black;
-  th td {
-    margin: 0;
-  }
+  border-collapse: collapse;
+  width: 70%;
   &__header {
     border-bottom: 1px solid black;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: 600;
   }
-  &__item-middle {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+  &__item-top-row {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  &__item {
+    margin: 0;
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
   }
 }
