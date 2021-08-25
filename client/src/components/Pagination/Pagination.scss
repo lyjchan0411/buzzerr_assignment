@@ -3,11 +3,12 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  margin-top: 50px;
   &__item {
     border: 1px solid #a3a3a3;
     border-collapse: collapse;
-    width: 17.2px;
-    padding: 5px 12px;
+    width: 14.5px;
+    padding: 5px 11px;
     cursor: pointer;
     margin-bottom: 10px;
     text-align: center;

@@ -7,10 +7,14 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    padding: 40px 0 50px;
+    padding: 40px 0 12px;
+    margin-bottom: 35px;
     width: 100%;
+    border-bottom: 1px solid rgba(179, 178, 178, 0.7);
     a {
       margin-right: 80px;
+      text-decoration: underline;
+      color: black;
     }
     &__header {
       width: 40%;

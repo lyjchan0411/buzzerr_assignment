@@ -1,7 +1,31 @@
+.activityTable {
+  width: 60vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  &__header-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 40px 0 12px;
+    margin-bottom: 35px;
+    width: 100%;
+    border-bottom: 1px solid rgba(179, 178, 178, 0.7);
+    a {
+      margin-right: 80px;
+      text-decoration: underline;
+      color: black;
+    }
+    &__header {
+      width: 40%;
+    }
+  }
+}
+
 .table {
   border: 1px solid black;
   border-collapse: collapse;
-  width: 70%;
+  width: 100%;
   &__header {
     border-bottom: 1px solid black;
     padding: 7px;

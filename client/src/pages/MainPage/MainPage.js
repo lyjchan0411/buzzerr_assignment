@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import DropDownList from "../DropDownList/DropDownList";
+import { Link } from "react-router-dom";
+import DropDownList from "../../components/DropDownList/DropDownList";
 import axios from "axios";
-import Post from "../Post/Post";
-import ActivityTable from "../ActivityTable/ActivityTable";
-import "./Feed.scss";
-import Pagination from "../Pagination/Pagination";
+import Post from "../../components/Post/Post";
+import "./MainPage.scss";
+import Pagination from "../../components/Pagination/Pagination";
 
-export default function Feed() {
+export default function MainPage() {
   const [searchValue, setSearchValue] = useState("");
   const [usersData, setUsersData] = useState();
   const [filteredValues, setFilteredValues] = useState([]);
@@ -31,12 +31,30 @@ export default function Feed() {
     axios
       .get(URL)
       .then((res) => {
-        setUsersData(res.data);
+        //Sorting the post by the date
+        let data = res.data;
+        data.sort(
+          (a, b) =>
+            new Date(
+              `${b.date_posted.substring(6, 11)}-${b.date_posted.substring(
+                3,
+                5
+              )}-${b.date_posted.substring(0, 2)}`
+            ) -
+            new Date(
+              `${a.date_posted.substring(6, 11)}-${a.date_posted.substring(
+                3,
+                5
+              )}-${a.date_posted.substring(0, 2)}`
+            )
+        );
+        setUsersData(data);
       })
       .catch((err) => {
         console.log(err);
       });
 
+    //Searchbar value. Search by name or company name
     if (searchValue !== "") {
       let filteredArr =
         usersData &&
@@ -54,7 +72,9 @@ export default function Feed() {
   return (
     <div className="feed">
       <div className="feed__header-container">
-        <h2 className="feed__header">Home</h2>
+        <h2 className="feed__header" onClick={() => paginate(1)}>
+          Home
+        </h2>
         <div className="feed__searchbar-container">
           <input
             type="text"
@@ -64,9 +84,11 @@ export default function Feed() {
           />
           <DropDownList filteredValues={filteredValues} />
         </div>
+        <div className="activity-link">
+          <Link to="/activities_table">Activity table</Link>
+        </div>
       </div>
       <Post usersData={currentPosts} />
-      <ActivityTable />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={usersData && usersData.length}
