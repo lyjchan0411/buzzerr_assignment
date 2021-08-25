@@ -17,7 +17,7 @@ function App() {
         <Route path="/activities_table" exact>
           <ActivityTable />
         </Route>
-      </Switch>
+      </Switch> 
     </div>
   );
 }
