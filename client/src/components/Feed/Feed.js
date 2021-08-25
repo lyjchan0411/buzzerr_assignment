@@ -4,22 +4,27 @@ import axios from "axios";
 import Post from "../Post/Post";
 import ActivityTable from "../ActivityTable/ActivityTable";
 import "./Feed.scss";
+import Pagination from "../Pagination/Pagination";
 
 export default function Feed() {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedUser, setSelectedUser] = useState([]);
   const [usersData, setUsersData] = useState();
   const [filteredValues, setFilteredValues] = useState([]);
-  const [modalToggle, setModalToggle] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(20);
   const URL = "http://localhost:5000/users";
 
   const onChangeHandler = (e) => {
     setSearchValue(e.target.value.toLowerCase());
   };
 
-  const onClickHandler = (id) => {
-    let filteredArr = usersData && usersData.filter((user) => user._id === id);
-    setSelectedUser([...filteredArr]);
+  //Setting up Pagination
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts =
+    usersData && usersData.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ export default function Feed() {
     } else {
       setFilteredValues("");
     }
-  }, [searchValue, modalToggle]);
+  }, [searchValue]);
 
   return (
     <div className="feed">
@@ -55,16 +60,19 @@ export default function Feed() {
             type="text"
             onChange={onChangeHandler}
             className="feed__searchbar"
-            placeholder="Search for an user by the name or company name"
+            placeholder="Search for an user by the name or company"
           />
-          <DropDownList
-            filteredValues={filteredValues}
-            onClickHandler={onClickHandler}
-          />
+          <DropDownList filteredValues={filteredValues} />
         </div>
       </div>
-      <Post usersData={usersData} />
+      <Post usersData={currentPosts} />
       <ActivityTable />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={usersData && usersData.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 }

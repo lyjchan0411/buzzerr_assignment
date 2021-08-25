@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact render={(props) => <Feed {...props} />} />
-        <Route path="/:id" exact render={(props) => <UserPost {...props} />} />
+        <Route path="/user/:id" exact render={(props) => <UserPost {...props} />} />
       </Switch>
     </div>
   );

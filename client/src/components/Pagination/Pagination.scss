@@ -1,0 +1,26 @@
+.pagination {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  &__item {
+    border: 1px solid #a3a3a3;
+    border-collapse: collapse;
+    width: 17.2px;
+    padding: 5px 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    &:first-child {
+      border-left: 1px solid #a3a3a3;
+    }
+    &:hover {
+      background-color: rgb(223, 223, 223);
+    }
+  }
+  &__active-item {
+    text-decoration: underline;
+    font-weight: 600;
+    color: rgb(128, 128, 255);
+  }
+}
