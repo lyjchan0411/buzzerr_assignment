@@ -2,7 +2,7 @@ import React from "react";
 import "./ActivityTable.scss";
 
 export default function ActivityTable({ user }) {
-  let totalPost = user.length;
+  let totalPost = user && user.length;
   return (
     <table className="table">
       <thead>

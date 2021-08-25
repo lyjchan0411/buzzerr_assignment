@@ -6,16 +6,16 @@ export default function Post({ usersData }) {
     usersData.sort(
       (a, b) =>
         new Date(
-          `${b.date_posted.substring(3, 5)}/${b.date_posted.substring(
-            0,
-            2
-          )}/${b.date_posted.substring(6, 11)}`
+          `${b.date_posted.substring(6, 11)}-${b.date_posted.substring(
+            3,
+            5
+          )}-${b.date_posted.substring(0, 2)}`
         ) -
         new Date(
-          `${a.date_posted.substring(3, 5)}/${a.date_posted.substring(
-            1,
-            2
-          )}/${a.date_posted.substring(6, 11)}`
+          `${a.date_posted.substring(6, 11)}-${a.date_posted.substring(
+            3,
+            5
+          )}-${a.date_posted.substring(0, 2)}`
         )
     );
 
