@@ -1,0 +1,17 @@
+.dropDownList {
+  width: 100%;
+  position: absolute;
+  top: 29px;
+  border-left: 1px solid rgba(235, 235, 235, 0.7);
+  border-right: 1px solid rgba(235, 235, 235, 0.7);
+  border-bottom: 1px solid rgba(235, 235, 235, 0.7);
+  background-color: white;
+  z-index: 1323;
+  &__item {
+    display: block;
+    padding: 8px;
+    &:hover {
+      background-color: rgb(223, 222, 222);
+    }
+  }
+}

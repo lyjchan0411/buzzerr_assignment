@@ -3,6 +3,7 @@ import DropDownList from "../DropDownList/DropDownList";
 import axios from "axios";
 import Post from "../Post/Post";
 import ActivityTable from "../ActivityTable/ActivityTable";
+import "./Feed.scss";
 
 export default function Feed() {
   const [searchValue, setSearchValue] = useState("");
@@ -56,12 +57,22 @@ export default function Feed() {
   }, [searchValue, modalToggle]);
 
   return (
-    <div>
-      <input type="text" onChange={onChangeHandler} />
-      <DropDownList
-        filteredValues={filteredValues}
-        onClickHandler={onClickHandler}
-      />
+    <div className="feed">
+      <div className="feed__header-container">
+        <h2 className="feed__header">Home</h2>
+        <div className="feed__searchbar-container">
+          <input
+            type="text"
+            onChange={onChangeHandler}
+            className="feed__searchbar"
+            placeholder="Type here to search for specific user"
+          />
+          <DropDownList
+            filteredValues={filteredValues}
+            onClickHandler={onClickHandler}
+          />
+        </div>
+      </div>
       <Post usersData={usersData} />
       <ActivityTable />
     </div>
