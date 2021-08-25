@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const users = require("./routes/users");
+const activities = require("./routes/activities");
 const cors = require("cors");
 
 const PORT = "5000";
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", users);
+app.use("/activities", activities);
 
 app.listen(PORT, () => {
   console.log("listening on port 5000 ");

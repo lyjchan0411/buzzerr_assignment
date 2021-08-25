@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const userId = req.params.id;
   let selectedUser = usersData.filter((user) => user._id === parseInt(userId));
-  console.log(userId);
   res.status(200).json(selectedUser);
 });
 

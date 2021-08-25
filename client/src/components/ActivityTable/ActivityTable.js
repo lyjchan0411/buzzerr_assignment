@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./ActivityTable.scss";
 
 export default function ActivityTable({ user }) {
+  const [tableData, setTableData] = useState();
+  let URL = "http://localhost:5000/activities";
   let totalPost = user && user.length;
+
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        setTableData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <table className="table">
       <thead>
@@ -15,13 +30,16 @@ export default function ActivityTable({ user }) {
         <td className="table__item table__item-middle">Total Posts</td>
         <td className="table__item">Total Likes</td>
       </tbody>
-      {user &&
-        user.map((user) => {
+      {tableData &&
+        tableData.map((post) => {
           return (
-            <tbody>
-              <td className="table__item">{user.name}</td>
-              <td className="table__item table__item-middle">{totalPost}</td>
-              <td className="table__item">{user.likes}</td>
+            <tbody key={post._id}>
+              <td className="table__item">{post.name}</td>
+              <td className="table__item table__item-middle">
+                {tableData &&
+                  tableData.filter((user) => user.name === post.name).length}
+              </td>
+              <td className="table__item">{post.likes}</td>
             </tbody>
           );
         })}

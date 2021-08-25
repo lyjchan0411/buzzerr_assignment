@@ -28,7 +28,6 @@ export default function UserPost(props) {
         <h2 className="userpost__header">{user && user[0].name}'s Post(s)</h2>
       </div>
       <Post usersData={user} />
-      <ActivityTable user={user} />
     </div>
   );
 }
